@@ -16,7 +16,14 @@ def test_detect_duplicates_empty():
 def test_detect_duplicates_single_article():
     with pytest.raises(ValueError):
         from src.util.detector import detect_duplicates
-        detect_duplicates("")
+        data = """
+            @article{key1,
+                title={Article 1},
+                author={Author A},
+                year={2020}
+            }
+        """
+        detect_duplicates(data)
 
 @pytest.mark.unit
 def test_detect_duplicates_missing_doi_same_key():
